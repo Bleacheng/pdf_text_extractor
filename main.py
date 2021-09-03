@@ -4,9 +4,13 @@ from PIL import Image, ImageTk
 
 root = tk.Tk()
 
-canvas = tk.Canvas(root, width = 1920, height = 1080)
+canvas = tk.Canvas(root, width = 600, height = 300)
 canvas.grid(columnspan=3) #creates 3 columns in the canvas/window
 title_label = tk.Label(root, text = 'PDF_Extractor', font = ('Helvetica', 30))
-title_label.place(x = 620, y = 10)
+title_label.grid(columnspan=3, column=0, row=0)
+
+instructions = tk.Label(root, text = 'Select a PDF on your computer to extract text from.', font = 'Helvetica')
+instructions.grid(columnspan=3, column=0, row=1)
+
 
 root.mainloop()
