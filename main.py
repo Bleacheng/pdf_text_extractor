@@ -1,5 +1,6 @@
 from os import read
 import tkinter as tk
+from tkinter.constants import CENTER
 import PyPDF2
 from PIL import Image, ImageTk
 from tkinter.filedialog import askopenfile
@@ -25,7 +26,14 @@ def open_pdf():
         read_pdf = PyPDF2.PdfFileReader(file_var)
         page = read_pdf.getPage(0)
         page_text = page.extractText()
-        print(page_text)
+
+        #text box to display the text form the PDF
+        text_box = tk.Text(root, height=10, width=50, padx=15, pady=15)
+        text_box.insert(1.0, page_text)
+        text_box.tag_configure('center', justify='center')
+        text_box.tag_add('center', 1.0, 'end')
+        text_box.grid(column=1, row=3)
+        browse_text.set('Browse')
 
 #browse button
 browse_text = tk.StringVar()
